@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    font:9pt/9pt "Microsoft YaHei";
+}
+
+h1 {
+    font: bold 30pt/30pt "Microsoft YaHei";
+}
+
+body {
+    text-align:center;
+}
+
+.top_title h1{
+    text-align: center;
+}
+
+.idc-main {
+    margin: 10px auto;
+    height: 500px;
+    width: 80%;
+    background-color: #929292;
+}
+
+.idc-item {
+    float: left;
+    line-height: 25px;
+    border-radius: 15px;
+    margin: 10px 0px 0px 10px;
+    text-align: left;
+    height: 115px;
+    width: 125px;
+    padding: 10px;
+    background-color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+    color: #2d2c2c;
+}
+
+.idc-noitem {
+    border-radius: 15px;
+    float: left;
+    margin: 10px 0px 0px 10px;
+    height: 135px;
+    width: 145px;
+    background-image: url("images/add-idc.jpg");
+    cursor: pointer;
+    background-color: #ffffff;
+    background-position: center;
+    background-repeat:no-repeat
+}
+
+.add-idc {
+    width: 600px;
+    height: 400px;
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*margin: -200px 0 0 -300px;*/
+    /*z-index: 3;*/
+    /*display: none;*/
+    /*background-color: #1a9790;*/
+}
+
+.mask {
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    z-index:2;
+    background-color: #D7D7D7;
+    display: none;
+    opacity: 0.5;
+}
+
+.add-title {
+    margin-top: 20px;
+    font:15pt/15pt "Microsoft YaHei";
+}
+
+.add-form-list {
+    color: #D7D7D7;
+    margin: 10px 0px 0px 220px;
+    text-align: left;
+}
+
+.add-form-button {
+    margin-top: 10px;
+}
+
+#idc-detail {
+    overflow: hidden;
+    padding: 0 5px;
+}
+
+.add-idc-form-sty {
+    margin-top: 5px;
+    width: 100%;
+}
+
+.idc-detail-form-div{
+    float: left;
+    width: 150px;
+    height: 100%;
+}
+
+.idc-detail-list {
+    margin-top: 10px;
+}
+
+.textbox,.textbox-invalid,.numberbox{
+    margin-top: 5px;
+    width: 100% !important;
+}
+
+.add-idc-form-lab {
+    margin-top: 10px;
+}
+
+
+#add-idc-div{
+    overflow: hidden;
+    padding: 0 5px;
+}
+
+.idc-detail-right-div {
+    width: 600px;
+    height: 300px;
+    float: left;
+    margin-left: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

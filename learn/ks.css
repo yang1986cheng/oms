@@ -1,0 +1,452 @@
+* {
+    margin: 0;
+}
+
+body {
+    background: url("images/bg.jpg") no-repeat scroll 0 217px rgba(0, 0, 0, 0);
+}
+
+.head {
+    width: 100%;
+    height: 216px;
+}
+.head .top_img {
+    width: 100%;
+    height: 53px;
+    display: block;
+}
+.head .title {
+    width: 1100px;
+    height: 163px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.head .title_top {
+    background: url("images/kaos_11.jpg") no-repeat scroll 862px 53px rgba(0, 0, 0, 0);
+    width: 1100px;
+    height: 111px;
+    /*background-color: rosybrown;*/
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.qq_online {
+    float: right;
+    width: 150px;
+    height: 35px;
+    margin: 53px 50px 0 0;
+}
+
+.hot_phone {
+    float: right;
+    width: 191px;
+    height: 35px;
+    margin: 53px 20px 0 0;
+}
+
+.head .logo {
+    float: left;
+    width: 308px;
+    height: 111px;
+    display: block;
+}
+
+.head .title_bottom {
+    width: 1100px;
+    height: 52px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.title_bottom a .home {
+    background: url("images/kaos_21.jpg") no-repeat scroll 12px 6px rgba(0, 0, 0, 0);
+    font: bold 14px/30px "Microsoft YaHei";
+    float: left;
+    margin: 10px 0 0 19px;
+    width: 50px;
+    height: 30px;
+    border: 2px solid #e7e7e7;
+    border-radius: 15px;
+    color: #707070;
+    font-style: oblique;
+    padding-left: 45px;
+}
+
+.title_bottom .navigation {
+    list-style: none outside none;
+    margin-left: 290px;
+}
+
+
+.navigation .selected {
+    background: url("images/kaos_17.jpg") no-repeat;
+    display: block;
+}
+
+.navigation li a {
+    float: left;
+    padding: 15px 40px 0 0;
+    font: 16px/25px "Microsoft YaHei";
+    color: #5a5a5a;
+    text-decoration: none;
+}
+
+.title_bottom .hello {
+    /*width: 160px;*/
+    /*height: 52px;*/
+    float: right;
+    font: 14px/25px "Microsoft YaHei";
+    color: #8a8989;
+    margin: 16px 95px 0 0;
+}
+
+.title_bottom .user {
+    float: right;
+    font: bold 16px/25px "Microsoft YaHei";
+    color: #5a5a5a;
+    margin: 14px -84px 0 0;
+    text-decoration: none;
+    word-spacing: 1px;
+}
+
+.title_bottom .user_action {
+    float: right;
+    font: normal 14px/25px "Microsoft YaHei";
+    color: #1b9891;
+    margin: 16px -130px 0 0;
+    text-decoration: none;
+    word-spacing: 1px;
+    padding-left: 7px;
+    border-left: 1px solid #8A8989;
+}
+
+
+.body {
+    width: 1100px;
+    height: 1235px;
+    margin: 0 auto  0 auto;
+    padding-top: 16px;
+    /*background-color: aquamarine;*/
+}
+
+.body .test_center {
+    width: 180px;
+    height: 570px;
+    padding: 0 15px 0 15px;
+    background-color: #ffffff;
+    float: left;
+}
+
+.test_center .top_pic {
+    display: block;
+    width: 180px;
+    height: 60px;
+}
+
+.test_center .user_photo {
+    display: block;
+    width: 180px;
+    height: 180px;
+}
+
+.test_center .user_name {
+    display: block;
+    width: 180px;
+    height: 57px;
+    text-align: center;
+    font: 28px "Microsoft YaHei";
+    color: #1a9790;
+    line-height: 57px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.test_center .user_info {
+    display: block;
+    width: 180px;
+    height: 98px;
+    text-align: left;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.test_center .count_left {
+    height: 45px;
+    width: 180px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.count_left .key {
+    font: 14px/48px "Microsoft YaHei";
+    color: #929292;
+}
+
+.count_left .value {
+    font: 20px/48px "Microsoft YaHei";
+    color: #ff9600;
+}
+
+.user_info_key {
+    font: 14px/21px "Microsoft YaHei";
+    color: #929292;
+}
+
+.user_info_value {
+    font: 14px/21px "Microsoft YaHei";
+    color: #5a5a5a;
+}
+
+.user_info_value1 {
+    font: 20px/30px "Microsoft YaHei";
+    color: #139992;
+}
+
+.test_center .practice_times{
+    height: 128px;
+    width: 180px;
+}
+
+.body .test_main {
+    width: 645px;
+    height: 1218px;
+    padding: 15px 15px 0 15px;
+    background-color: #ffffff;
+    margin-left: 15px;
+    float: left;
+}
+
+.test_main .practice_title {
+    list-style: none outside none;
+    padding: 0;
+}
+
+.practice_title li a{
+    float: left;
+    display: block;
+    width: 160px;
+    height: 44px;
+    margin-left: 1px;
+    background-color: #7a7a7a;
+    text-align: center;
+    text-decoration: none;
+    font: oblique bold 16px/45px "Microsoft YaHei";
+    color: #ffffff;
+}
+
+.practice_title li a:hover {
+    background-color: #139992;
+}
+
+.test_main .practice_tag {
+    height: 52px;
+    width: 645px;
+    background-color: #f4f4f4;
+    font: 16px/45px "Microsoft YaHei";
+    color: #707070;
+    text-align: center;
+    float: left;
+}
+
+.test_main .practice_tag span {
+    font: 16px/45px "Microsoft YaHei";
+    color: #139992;
+    margin: 0 5px 0 5px;
+}
+
+.test_main .level {
+    width: 645px;
+    height: 104px;
+    float: left;
+}
+
+.level .level_top {
+    background: url("images/kaos_28.jpg") no-repeat scroll 0px 18px rgba(0, 0, 0, 0);
+    width: 645px;
+    height: 52px;
+    float: left;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.level_top p {
+    margin: 18px 0 0 45px;
+    float: left;
+}
+
+.normal {
+    font: 16px/30px "Microsoft YaHei";
+    color: #5a5a5a;
+}
+
+.small {
+    font: 12px/30px "Microsoft YaHei";
+    color: #aaaaaa;
+}
+
+.level .level_bottom {
+    width: 645px;
+    height: 52px;
+    float: left;
+}
+
+.level_bottom p {
+    float: left;
+    margin: 10px 0 0 15px;
+    padding: 10px;
+    font: 14px/14px "Microsoft YaHei";
+    color: #5a5a5a;
+
+}
+
+.level_bottom p input {
+    margin-left: 25px;
+}
+
+.radio_or_not {
+    font: 12px/27px "Microsoft YaHei";
+    color: #aaaaaa;
+}
+
+.type {
+    float: left;
+    width: 645px;
+    min-height: 880px;
+}
+
+.type .type_title {
+    background: url("images/kaos_31.jpg") no-repeat scroll 0px 18px rgba(0, 0, 0, 0);
+    width: 645px;
+    height: 52px;
+    float: left;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.type_title p {
+    margin: 18px 0 0 45px;
+    float: left;
+}
+
+.type .t {
+    float: right;
+    width: 590px;
+    height: 830px;
+    /*background-color: aqua;*/
+}
+
+.chapter_close {
+    width: 590px;
+    height: 60px;
+    float: right;
+    margin-top: 5px;
+    background: url("images/kaos_35.jpg") no-repeat scroll 555px 30px rgba(0, 0, 0, 0);
+    background-color: #f7f7f7;
+}
+
+.chapter_open {
+    width: 590px;
+    height: 60px;
+    float: right;
+    margin-top: 5px;
+    background: url("images/kaos_38.jpg") no-repeat scroll 555px 30px rgba(0, 0, 0, 0);
+    background-color: #f7f7f7;
+}
+
+.chapter_close .chapter {
+    font:bold 14px/27px "Microsoft YaHei";
+    color: #5a5a5a;
+    margin: 10px 0 0 10px;
+}
+
+.chapter_close .tip {
+    font:12px/12px "Microsoft YaHei";
+    float: left;
+    color: #787878;
+    margin: 0px 0 0 10px;
+}
+
+.chapter_list {
+    float: right;
+    /*background-color: #aaaaaa;*/
+    width: 456px;
+    height: 120px;
+    padding: 0 120px 0 25px;
+}
+
+.chapter_list ul {
+    padding: 0;
+}
+
+.chapter_list li {
+    float: left;
+    margin-left: 10px;
+    list-style: none outside none;
+}
+
+
+.chapter_list li a {
+    font:14px/35px "Microsoft YaHei";
+    display: block;
+    width: 45px;
+    height: 35px;
+    border: 1px solid #D7D7D7;
+    margin-top: 8px;
+    text-align: center;
+    text-decoration: none;
+    color: #787878;
+}
+
+.chapter_list li a:hover {
+    background-color: #129992;
+    color: #ffffff;
+}
+
+.t .question {
+    font:16px/20px "Microsoft YaHei";
+    color: #139992;
+}
+
+.t .question_type {
+    font:bold 14px/20px "Microsoft YaHei";
+    color: #139992;
+    display: block;
+    margin: 15px 0 0 15px;
+}
+
+.t li {
+    list-style: none;
+}
+
+.t .list {
+    background: url("images/7-kaos_03.jpg") no-repeat scroll 0px 0px rgba(0, 0, 0, 0);
+    float: left;
+    margin-left: -6px;
+    height: 17px;
+}
+
+.t .list_open {
+    background: url("images/7-kaos_06.jpg") no-repeat scroll 0px 0px rgba(0, 0, 0, 0);
+    float: left;
+    margin-left: -6px;
+    height: 17px;
+}
+
+.t .list_open span {
+    margin-left: 65px;
+    font:bold 14px/14px "Microsoft YaHei";
+    color: #129992;
+}
+
+.t .list span {
+    margin-left: 65px;
+    font:14px/14px "Microsoft YaHei";
+    color: #5a5a5a;
+}
+
+.t img {
+    display: block;
+}
+
+.vertical_line {
+    height: 20px;
+    width: 100%;
+    border-left: 1px solid #dfdfdf;
+    float: left;
+}

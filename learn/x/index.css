@@ -1,0 +1,78 @@
+/* CSS Document */
+
+ html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, font, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td {margin:0; padding:0;}
+ 
+body{width:100%;}
+li{
+    list-style-type:none;
+	font-size:15px;
+	text-align:center;
+	padding:20px 0;
+	
+   }
+.li_des1{
+    background-color:#0B3E75;
+	width:80px;
+	height:40px;
+   
+	
+	
+       }
+.ft{
+    font-size:20px;
+    font-family:"������";
+	font-weight:bold;
+	line-height:46px;
+	 }
+.ftt{
+    font-size:26px;
+    font-family:"������";
+	font-weight:bold;
+	line-height:42px;
+
+    }
+
+.top{
+    width:100%;
+    height:42px;
+	
+	  }
+.top_left{
+    width:32%;
+	height:42px;
+	float:left;
+	text-align:center;
+	      }
+.top_middle{
+     width:35%;
+	 height:42px;
+	 float:left;
+	      }
+.top_right{
+     width:33%;
+	 height:42px;
+	 float:left;
+	 text-align:center;
+	 }
+ .main{
+    width:100%;
+    height:738px;
+	    }
+
+ .leftside{
+     width:80px;
+	 height:738px; 
+	 float:left;
+	 background-color:#53739A;
+	 
+	        }
+.rightside{
+	height:738px;
+	background-color:#4BB7BA;
+	
+	
+	        }
+.img{
+      margin:2px 2px;
+	 
+	  }

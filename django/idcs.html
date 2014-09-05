@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="static/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="static/easyui/themes/icon.css">
+    <link rel="stylesheet" href="static/resource.css"/>
+    <script type="text/javascript" src="static/jquery-2-1-1.js"></script>
+    <script type="text/javascript" src="static/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="static/resource.js"></script>
+    <title></title>
+</head>
+<body>
+    <div id="add-idc-div">
+        <div class="add-form-div">
+            <form class="add-form">
+                <!--{% csrf_token %}-->
+                <div class="add-idc-form-lab">
+                    <label>机房名称：</label>
+                </div>
+                <div>
+                    <input type="text" class="easyui-validatebox add-idc-form-sty" name="idc-name" data-options="required:true">
+                </div>
+                <div class="add-idc-form-lab">
+                    <label>省份：</label>
+                </div>
+                <div>
+                    <input type="text" class="easyui-validatebox add-idc-form-sty" name="provinces" data-options="required:true">
+                </div>
+                <div class="add-idc-form-lab">
+                    <label>城市：</label>
+                </div>
+                <div>
+                    <input type="text" class="easyui-validatebox add-idc-form-sty" name="city" data-options="required:true">
+                </div>
+                <div class="add-idc-form-lab">
+                    <label>区县：</label>
+                </div>
+                <div>
+                    <input type="text" class="easyui-validatebox add-idc-form-sty" name="county" data-options="required:true">
+                </div>
+                <div class="add-idc-form-lab">
+                    <label>街道：</label>
+                </div>
+                <div>
+                    <input type="text" class="easyui-validatebox add-idc-form-sty" name="address" data-options="required:true">
+                </div>
+                <div class="add-idc-form-lab">
+                    <label>邮编：</label>
+                </div>
+                <div>
+                    <input type="text" class="easyui-numberbox add-idc-form-sty-num" name="zipcode" data-options="required:true,validType:['length[6,6]']">
+                </div>
+                <div class="add-idc-form-lab">
+                    <label>到期日期：</label>
+                </div>
+                <div>
+                    <input type="text" class="easyui-datebox add-idc-form-sty-num" name="end-date" data-options="required:true">
+                </div>
+                <div class="add-idc-form-lab">
+                    <label>联系人：</label>
+                </div>
+                <div>
+                    <input type="text" class="easyui-validatebox add-idc-form-sty" name="contact" data-options="required:true,validType:{length:[1,5]}">
+                </div>
+                <div class="add-idc-form-lab">
+                    <label>联系电话：</label>
+                </div>
+                <div>
+                    <input type="text" class="easyui-numberbox add-idc-form-sty" name="phone" data-options="required:true,validType:{length:[8,12]}">
+                </div>
+                <div class="add-idc-form-lab">
+                    <label>联系邮件：</label>
+                </div>
+                <div>
+                    <input type="text" class="easyui-validatebox add-idc-form-sty" name="email" data-options="required:true,validType:['email']">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="top_title">
+        <h1>{{ top_title }}</h1>
+    </div>
+    <div class="idc-main">
+        <form>
+            <!--{% csrf_token %}-->
+            <!--{% for item in idcs %}-->
+                <div class="idc-item"><input class="idc-item-hidden" type="hidden" value="1">机房：广东河源<br>地址：河源工业源<br>联系人：胡财<br>电话：18684030907</div>
+                <div class="idc-item"><input class="idc-item-hidden" type="hidden" value="2">机房：广东河源<br>地址：河源工业源<br>联系人：胡财<br>电话：18684030907</div>
+            <!--{% endfor %}-->
+        </form>
+        <div class="idc-noitem" onclick="open_add_idc_div()"></div>
+    </div>
+
+    <div id="idc-detail">
+        <div class="idc-detail-form-div">
+            <form class="idc-detail-form">
+                <!--{% csrf_token %}-->
+                <input id='idc-detaid-idc-id' type="hidden" name='idc_id'>
+                <div class="idc-detail-list">
+                    <label class="label-front">机房名称：</label>
+                    <input id='idc-detail-name' type="text" class="easyui-validatebox add-idc-form-sty" data-options="required:true" name="idc-name">
+                </div>
+                <div class="idc-detail-list">
+                    <label class="label-front">邮编：</label>
+                    <input id='idc-detail-zipcode' type="text" class="easyui-numberbox add-idc-form-sty" data-options="required:true" name="zipcode">
+                </div>
+                <div class="idc-detail-list">
+                    <label class="label-front">联系人：</label>
+                    <input id='idc-detail-contact' type="text" class="easyui-validatebox add-idc-form-sty" data-options="required:true" name="contact">
+                </div>
+                <div class="idc-detail-list">
+                    <label class="label-front">联系电话：</label>
+                    <input id='idc-detail-phone' type="text" class="easyui-numberbox add-idc-form-sty" data-options="required:true" name="phone">
+                </div>
+
+                <div class="idc-detail-list">
+                    <label class="label-front">联系邮件：</label>
+                    <input id='idc-detail-email' type="text" class="easyui-validatebox add-idc-form-sty" data-options="required:true,validType:['email']" name="email">
+                </div>
+                <div class="idc-detail-list">
+                    <label class="label-front">到期时间：</label>
+                    <input id='idc-detail-date' id='end-time-input' type="text" class="easyui-datebox add-idc-form-sty" data-options="required:true" name="end-date">
+                </div>
+                <div class="idc-detail-list">
+                    <label class="label-front">详细地址：</label>
+                    <input id='idc-detail-address' type="text" class="easyui-validatebox add-idc-form-sty" data-options="required:true" name="address">
+                </div>
+            </form>
+        </div>
+        <div class="idc-detail-center-div">
+        </div>
+    </div>
+
+</body>
+</html>

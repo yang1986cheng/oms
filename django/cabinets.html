@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="static/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="static/easyui/themes/icon.css">
+    <link rel="stylesheet" href="static/cabinets.css"/>
+    <script type="text/javascript" src="static/jquery-2-1-1.js"></script>
+    <script type="text/javascript" src="static/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="static/cabinets.js"></script>
+    <script type="text/javascript" src="static/django_post.js"></script>
+    <title></title>
+</head>
+<body>
+<div class="cb-main-div">
+    <div class="cb-search-div">
+        <form class="cb-search-form">
+            <!--{% csrf_token %}-->
+            <div class="cb-search-form-div">
+                <label class="cb-search-label">所属机房：</label>
+                <input id='cb-search-idc' class="easyui-combobox" name='cb-add-idc' style="height: 20px" data-options="valueField:'id', textField:'name',url:'/resource/get-idcs/'">
+            </div>
+            <div class="cb-search-form-div">
+                <label class="cb-search-label">入库日期：</label>
+                <input type="text" class="easyui-datebox">
+            </div>
+            <div class="cb-search-form-div">
+                <label class="cb-search-label">到期日期：</label>
+                <input type="text" class="easyui-datebox">
+            </div>
+            <div class="cb-search-form-div">
+                <label class="cb-search-label">是否有空位：</label>
+                <select name="cb-search-is-full">
+                    <option value="0">是</option>
+                    <option value="1">否</option>
+                </select>
+            </div>
+            <div class="cb-search-form-div">
+                <a id='cb-search-check' class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>
+            </div>
+
+        </form>
+    </div>
+    <div class="cb-display-div">
+        <div id='cb-display-table'></div>
+    </div>
+    <div id="cb-add-new" class="easyui-dialog" style="width: 300px;height: 300px" data-options="iconCls:'icon-add', title:'添加新机柜', closed:'true',
+        modal:true" buttons='#cb-add-form-button'>
+        <form id="cb-add-form">
+            <!--{% csrf_token %}-->
+            <div class="cb-add-form-d">
+                <label>机柜编号：</label>
+                <input type="text" name="cb-name" class="easyui-validatebox" data-options="required:true, validType:'length[1,30]'">
+            </div>
+            <div class="cb-add-form-d">
+                <label>机柜规格：</label>
+                <input type="text" name="cb-size" class="easyui-validatebox" data-options="required:true">
+            </div>
+            <div class="cb-add-form-d">
+                <label>到期日期：</label>
+                <input type="text" name="cb-end-date" class="easyui-datebox" data-options="required:true">
+            </div>
+            <div class="cb-add-form-d">
+                <label>负责人：</label>
+                <input id='cb-admin' class="easyui-combobox" name='cb-add-admin' style="height: 20px" data-options="valueField:'id', textField:'username', required:true">
+            </div>
+            <div class="cb-add-form-d">
+                <label>所在机房：</label>
+                <input id='cb-idc' class="easyui-combobox" name='cb-add-idc' style="height: 20px" data-options="valueField:'id', textField:'name', required:true">
+            </div>
+            <div class="cb-add-form-d">
+                <label>是否可用：</label>
+                <select name="cb-add-usable">
+                    <option value="0">可用</option>
+                    <option value="1">不可用</option>
+                </select>
+            </div>
+        </form>
+        <div id='cb-add-form-button'>
+            <a href="javascript:void(0)" onclick="cb_add_commit()" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">添加</a>
+            <a href="javascript:void(0)" onclick="cb_add_cancel()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
+        </div>
+    </div>
+    <div id="cb-update-div" class="easyui-dialog" style="width: 300px;height: 300px" data-options="iconCls:'icon-edit', title:'编辑机柜信息', closed:'true',
+        modal:true" buttons='#cb-update-form-button'>
+        <form id="cb-update-form">
+            <!--{% csrf_token %}-->
+            <div class="cb-update-form-d">
+                <label>机柜编号：</label>
+                <input id="cb-name" type="text" name="cb-name" class="easyui-validatebox" data-options="required:true, validType:'length[1,30]'">
+                <input id="cb-id" type="hidden" name="cb-id">
+            </div>
+            <div class="cb-update-form-d">
+                <label>机柜规格：</label>
+                <input id="cb-size" type="text" name="cb-size" class="easyui-validatebox" data-options="required:true">
+            </div>
+            <div class="cb-update-form-d">
+                <label>到期日期：</label>
+                <input id="cb-end-date" name="cb-end-date" class="easyui-datebox" data-options="required:true">
+            </div>
+            <div class="cb-update-form-d">
+                <label>负责人：</label>
+                <input id='cb-update-admin' class="easyui-combobox" name='cb-update-admin' style="height: 20px" data-options="valueField:'id', textField:'username', required:true">
+            </div>
+            <div class="cb-update-form-d">
+                <label>所在机房：</label>
+                <input id='cb-update-idc' class="easyui-combobox" name='cb-update-idc' style="height: 20px" data-options="valueField:'id', textField:'name', required:true">
+            </div>
+            <div class="cb-update-form-d">
+                <label>是否可用：</label>
+                <input id='cb-update-usable' class="easyui-combobox" name='cb-update-usable' style="height: 20px" data-options="valueField:'id', textField:'usable'">
+            </div>
+        </form>
+        <div id='cb-update-form-button'>
+            <a href="javascript:void(0)" onclick="cb_update_commit()" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">更新</a>
+            <a href="javascript:void(0)" onclick="cb_update_cancel()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
+        </div>
+     </div>
+</div>
+</body>
+</html>

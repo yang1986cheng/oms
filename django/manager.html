@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}HIKe deployment System{% endblock %}
+
+{% block content %}
+<h1>Contact us</h1>
+
+{% if form.errors %}
+<p style="color: red;">
+    Please correct the error{{ form.errors|pluralize }} below.
+</p>
+{% endif %}
+<script type="text/javascript">
+    $("button").click(function() {
+        $("#id_host").hide()
+    })
+</script>
+<form action="/result/" method="post">
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}

@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    font:9pt/9pt "Microsoft YaHei";
+}
+
+.main-div {
+    height: 700px;
+    margin: 50px auto;
+}
+
+.choose {
+    margin: auto;
+    text-align: center;
+}
+
+.type {
+    float: left;
+}
+
+
+textarea.displaywindow {
+    width: 1400px;
+    height: 700px;
+    margin: 10px auto;
+    background-color: #000000;
+    color: #ffffff;
+    resize:none;
+}

@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+}
+
+body {
+    background-color: #f1f1f1;
+}
+
+.top_pic {
+    width: 100%;
+    margin-top: -4px;
+    height: 370;
+}
+
+.top_screen {
+    margin-top: 40px;
+    width: 987px;
+    height: 1180px;
+    background-color: #ffffff;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 35px 30px 0 30px;
+}
+
+.top_screen .main_screen_ {
+    width: 980px;
+    height: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.phone_title {
+    width: 917px;
+    height: 80px;
+    border-bottom: 1px solid;
+    border-bottom-color: #dcdcdc;
+}
+
+.phone_title .phone {
+    float: left;
+    font: 24px "Microsoft YaHei";
+    display: block;
+    border-right: 1px solid #000000;
+    font-weight: 800;
+    line-height: 36px;
+    padding-right: 10px;
+}
+
+.phone_title .link_to_atta {
+    float: left;
+    font: 14px "Microsoft YaHei";
+    line-height: 36px;
+    padding-left: 10px;
+    color: #202020;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.phone_list_normal {
+    background: url("images/store-main_03.jpg") no-repeat scroll 211px 68px rgba(0, 0, 0, 0);
+    width: 246px;
+    float: left;
+    height: 455px;
+    /*background-color: rosybrown;*/
+    padding: 45px 0px 30px 0px;
+}
+
+.phone_list_right {
+    /*background: url("images/store-main_03.jpg") no-repeat scroll 210px 68px rgba(0, 0, 0, 0);*/
+    width: 240px;
+    float: left;
+    height: 455px;
+    /*background-color: rosybrown;*/
+    padding: 45px 0px 30px 0px;
+}
+
+.phone_list_normal img, .phone_list_right img {
+    width: 141px;
+    height: 257px;
+    padding-left: 20px;
+}
+
+.phone_list_normal h1, .phone_list_right h1 {
+    padding-top: 10px;
+    text-align: center;
+    width: 178px;
+    display: block;
+    font: bold 26px/30px "Microsoft YaHei";
+}
+
+.phone_list_normal p, .phone_list_right p {
+    padding-top: 10px;
+    text-align: left;
+    text-indent: 2em;
+    width: 178px;
+    color: #767676;
+    font: normal 12px "Microsoft YaHei";
+}
+
+.phone_list_normal h2, .phone_list_right h2 {
+    padding-top: 5px;
+    text-align: center;
+    width: 178px;
+    display: block;
+    font: bold 26px/30px "Microsoft YaHei";
+}
+
+.phone_list_normal a, .phone_list_right a {
+    width: 117px;
+    height: 35px;
+    margin: 0 auto;
+    display: block;
+    font: bold 16px/38px "Microsoft YaHei";
+    letter-spacing: 2px;
+    background-color: #b8d200;
+}
+
+.phone_list_normal .hot {
+    background: url("images/hot.jpg") no-repeat no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    float: right;
+    width: 33px;
+    height: 33px;
+    margin: 226px 52px 0 0;
+}
+
+.phone_list_normal .normal {
+    background: url("images/hot.jpg") no-repeat no-repeat scroll 0 -33px rgba(0, 0, 0, 0);
+    float: right;
+    width: 33px;
+    height: 33px;
+    margin: 226px 52px 0 0;
+}
+
+.phone_list_right .hot {
+    background: url("images/hot.jpg") no-repeat no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    float: right;
+    width: 33px;
+    height: 33px;
+    margin: 226px 46px 0 0;
+}
+
+.phone_list_right .normal {
+    background: url("images/hot.jpg") no-repeat no-repeat scroll 0 -33px rgba(0, 0, 0, 0);
+    float: right;
+    width: 33px;
+    height: 33px;
+    margin: 226px 46px 0 0;
+}

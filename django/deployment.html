@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/main.css"/>
+    <script type="text/javascript" src="/static/jquery-2-1-1.js"></script>
+    <script type="text/javascript" src="/static/main.js"></script>
+    <script type="text/javascript" src="/static/django_post.js"></script>
+    <title></title>
+</head>
+<body>
+<div class="describe">项目部署管理</div>
+<div class="deploy-table">
+    <form id="deploy-form" class="deploy-form" action="/deployment/deploy/" method="post">
+        {% csrf_token %}
+        <div class="dep-form">
+            <label class="project">部署项目：</label>
+            <select name="project" id="dproject">
+                <option value ="website" selected>官网</option>
+                <option value="bbs">社区(论坛)</option>
+                <option value="weixin">微信商城</option>
+                <option value="media">行知客</option>
+                <option value="mobile">手机官网</option>
+                <option value ="enweb">英文版官网</option>
+                <option value="cms">内容管理系统</option>
+            </select>
+        </div>
+        <div class="dep-form">
+            <label class="type" for="type">部署类型：</label>
+            <select name="type" name="type" id='type'>
+                <option value ="pre-deploy" selected>预发布</option>
+                <option value="official">正式发布</option>
+            </select>
+        </div>
+        <div class="dep-form">
+            <label class="resource" for="resource">部署内容：</label>
+            <select name="resource" id='resource'>
+                <option value ="code" selected>代码</option>
+                <option value="config">配置文件</option>
+            </select>
+        </div>
+        <div class="dep-form">
+            <label class="reason" for="reason">部署原因：</label>
+            <select name="reason" id='reason'>
+                <option value ="new" selected>新功能上线</option>
+                <option value="bug">BUG修复</option>
+            </select>
+        </div>
+        <!--<div class="dep-form">-->
+        <!--<input name="hosts" type="checkbox" id='61' value="61">-->
+        <!--<label for="61">61</label>-->
+        <!--<input name="hosts" type="checkbox" id='62' value="62">-->
+        <!--<label for="62">62</label>-->
+        <!--<input name="hosts" type="checkbox" id='63' value="63">-->
+        <!--<label for="63">63</label>-->
+        <!--<input name="hosts" type="checkbox" id='64' value="64">-->
+        <!--<label for="64">64</label>-->
+        <!--<input name="hosts" type="checkbox" id='65' value="65">-->
+        <!--<label for="65">65</label>-->
+        <!--<input name="hosts" type="checkbox" id='66' value="66">-->
+        <!--<label for="66">66</label>-->
+        <!--<input name="hosts" type="checkbox" id='0' value="0">-->
+        <!--<label for="0">All</label>-->
+        <!--</div>-->
+        <div class="dep-form">
+            <label class="people" for="people">执行人：</label>
+            <select name="people" id='people'>
+                <option value ="yzc" selected>杨忠诚</option>
+                <option value="otr">其它</option>
+            </select>
+        </div>
+        <div class="dep-form">
+            <input class="deploy" type="button" value="开始部署">
+            <input class="cancel" type="button" value="放弃部署">
+        </div>
+    </form>
+    <textarea class="result" disabled="disabled">Display status here...</textarea>
+</div>
+</body>
+</html>

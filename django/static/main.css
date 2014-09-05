@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    font:9pt/9pt "Microsoft YaHei";
+}
+
+body {
+    text-align:center;
+}
+
+.describe {
+    font:bold 12pt/12pt "Microsoft YaHei";
+    margin: 50px auto;
+}
+
+label.project {
+
+}
+
+.dep-form {
+    /*background-color: #1b9891;*/
+    width: 180px;
+    margin: 10px auto;
+}
+
+.deploy-table {
+    border-width: 1px;
+    margin: 50px auto;
+    width: 900px;
+    text-align: left;
+}
+
+.deploy-table .deploy-form {
+    /*border:1px solid #006600;*/
+    width: 450px;
+    margin: auto;
+}
+
+p.xxxx {
+    width: 450px;
+    margin: 10px auto;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+textarea.result {
+    width: 900px;
+    height: 500px;
+    margin: 10px auto;
+    background-color: #000000;
+    color: #ffffff;
+    resize:none;
+}
+
+input.deploying {
+    background-image: url("images/running.gif");
+    background-position: 120px 0px;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+}
+
+.login-main-div{
+    width: 200px;
+    height: 60px;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.login-form-item{
+    margin-top: 15px;
+}
+
+#login-submit{
+    height: 27px;
+    position: absolute;
+    right: 90px;
+    top: 160px;
+    width: 59px;
+    z-index: 2;
+}
+
+#login-cancel {
+    height: 27px;
+    position: absolute;
+    right: 20px;
+    top: 160px;
+    width: 59px;
+    z-index: 2;
+}
+
+#login-button {
+    height: 25px;
+}

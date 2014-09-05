@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    /*background-color: #1b9891;*/
+}
+
+.navbarlogo {
+    width: 100%;
+    height: 105px;
+}
+
+.navsection {
+    margin: 0px 0px 0px 10px;
+}
+
+.navsectiontitle {
+    background-color: #efefef;
+    border: 1px solid #dddddd;
+    font-size: 9pt;
+    font-weight: bold;
+    padding: 2px;
+}
+
+.f_menu {
+    list-style: none;
+    padding: 0px;
+}
+
+.navsection .f_menu a {
+    background: url("/static/images/greendot.gif") no-repeat scroll 0 2px transparent;
+    text-decoration: none;
+    font:normal 14px/14px "Microsoft YaHei";
+    color: #5a5a5a;
+    padding: 0 0 0 15px;
+    letter-spacing: 2px;
+    margin-left: 15px;
+}
+
+.f_menu a:hover{
+    background: url("/static/images/orangedot.gif") no-repeat scroll 0 2px transparent;
+    text-decoration: none;
+    font:normal 14px/14px "Microsoft YaHei";
+    color: orange;
+    padding: 0 0 0 15px;
+    margin-left: 15px;
+}
+

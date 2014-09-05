@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/logs.css"/>
+    <script type="text/javascript" src="/static/jquery-2-1-1.js"></script>
+    <script type="text/javascript" src="/static/main.js"></script>
+    <script type="text/javascript" src="/static/django_post.js"></script>
+    <title></title>
+</head>
+<body>
+<div class="main-div">
+    <form class="choose" action="/deployment/deploy/" method="post">
+        {% csrf_token %}
+        <label for='project'>项目：</label>
+        <select id='project'>
+            <option selected='selected' value="none">请选择项目</option>
+            <option value="hike">HIKe Deamon</option>
+            <option value="wechat">HIKe wechat</option>
+            <option value="admin_portal">HIKe admin_portal</option>
+            <option value="listener">HIKe listener</option>
+            <option value="export">HIKe export</option>
+            <!--<option value="solr">HIKe 微信</option>-->
+        </select>
+        <label for='logs'>日志：</label>
+        <select id='logs'>
+            <option selected='selected' value="none">请选择日志</option>
+        </select>
+        <label>查看方式：</label>
+        <input type="radio" checked="checked" name="viewtype" value="dumps">查看全文
+        <input type="radio" name='viewtype' value="realtime">实时查看
+        <input type="button" class="check" id='check' value="立即查看">
+        <div class="bottom">
+            <textarea class="displaywindow">Display logs here...</textarea>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>
