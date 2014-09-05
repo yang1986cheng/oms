@@ -18,7 +18,7 @@ $(document).ready(function(){
 //            {field:'svr-id':title:'ID',with 5},
 //            {field:'idc-id', title:'IDC-ID'},
 //            {field:'user-id', title:'User-ID'},
-//            {field:'svr-usable', title:'usable'},
+//            {field:'svr-usable-id', title:'usable'},
             {field:'svr-name', title:'编号', width:40},
             {field:'idc-name', title:'所在机房', width:40},
             {field:'cab-name', title:'所属机柜', width:40},
@@ -28,6 +28,7 @@ $(document).ready(function(){
             {field:'end-date', title:'到期日期', width:40},
             {field:'father-server', title:'父级', width:40},
             {field:'pro-name', title:'所属项目', width:40},
+            {field:'svr-usable', title:'可用', width:20},
             {field:'op-name', title:'负责人', width:40}
         ]],
         onSelect:function(rowIndex, rowData) {
