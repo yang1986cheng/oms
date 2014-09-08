@@ -1,7 +1,8 @@
 $(document).ready(function(){
     $('#svr-display-table').datagrid({
         url:'xxx.json',
-        title:'服务器列表',
+        height:500,
+//        title:'服务器列表',
         fit:true,
         iconCls:'icon-filter',
         fitColumns:true,
@@ -27,7 +28,7 @@ $(document).ready(function(){
             {field:'storage-date', title:'入库日期', width:40},
             {field:'end-date', title:'到期日期', width:40},
             {field:'father-server', title:'父级', width:40},
-            {field:'pro-name', title:'分配IP', width:60},
+            {field:'pro-name', title:'所属项目', width:40},
             {field:'svr-usable', title:'可用', width:20},
             {field:'op-name', title:'负责人', width:40}
         ]],

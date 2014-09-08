@@ -32,12 +32,16 @@ $(document).ready(function(){
             $('#btn-update').linkbutton('enable')
             $('#btn-del').linkbutton('enable')
         },
-        onDblClickRow:open_update_window,
+        onDblClickRow:function(){
+            open_update_window()
+            cb_size_tip()
+        },
         toolbar:[{
             id:'btn-add',
             text:'添加',
             iconCls:'icon-add',
             handler:function(){
+                cb_size_tip()
                 $('#cb-add-new').dialog('open'),
                 $('#cb-admin').combobox({'url':'/resource/get-users/'}),
                 $('#cb-idc').combobox({'url':'/resource/get-idcs/'})
@@ -47,7 +51,10 @@ $(document).ready(function(){
             text:"更新",
             iconCls:'icon-edit',
             disabled:true,
-            handler:open_update_window
+            handler:function(){
+                open_update_window()
+                cb_size_tip()
+            }
         },'-',{
             id:'btn-del',
             text:'删除',
@@ -128,6 +135,19 @@ function cb_update_commit() {
 
 function cb_update_cancel() {
     $('#cb-update-div').dialog('close')
+}
+
+function cb_size_tip() {
+    $('.cb-size-tip').tooltip({
+        position:'right',
+        content:'<span style="color: #000000">格式如下：<br><br>长*宽*高（mm）</span> ',
+        onShow:function() {
+            $(this).tooltip('tip').css({
+                backgroundColor:'#ffe48d',
+                borderColor:'#666'
+            })
+        }
+    })
 }
 
 

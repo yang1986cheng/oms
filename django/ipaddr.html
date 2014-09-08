@@ -4,13 +4,19 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="static/easyui/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="static/easyui/themes/icon.css">
-    <link rel="stylesheet" href="static/ipaddrs.css"/>
+    <link rel="stylesheet" href="static/ipaddr.css"/>
     <script type="text/javascript" src="static/jquery-2-1-1.js"></script>
     <script type="text/javascript" src="static/easyui/jquery.easyui.min.js"></script>
-    <script type="text/javascript" src="static/ipaddrs.js"></script>
+    <script type="text/javascript" src="static/ipaddr.js"></script>
     <title></title>
 </head>
 <body>
-              ip
+<div id="ip-div-main" class="easyui-tabs" style="position:absolute;width: 800px; height: 650px;top:50%; left: 50%;margin-top: -325px;margin-left: -400px;">
+    <div title="公网IP" style="padding: 10px" data-options="iconCls:'icon-filter'">
+        <div id='svr-display-table' style="height: 650px"></div>
+     </div>
+    <div title="私网IP" data-options="iconCls:'icon-filter'">私网IP</div>
+    <div title="域名及映射" data-options="iconCls:'icon-filter'">域名及映射</div>
+</div>
 </body>
 </html>

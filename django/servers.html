@@ -37,13 +37,12 @@
             <div class="svr-search-form-div">
                 <a id='svr-search-check' class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>
             </div>
-
         </form>
     </div>
     <div class="svr-display-div">
         <div id='svr-display-table'></div>
     </div>
-    <div id="svr-add-new" class="easyui-dialog" style="width: 300px;height: 440px" data-options="iconCls:'icon-add', title:'添加新机柜', closed:'true',
+    <div id="svr-add-new" class="easyui-dialog" style="width: 300px;height: 440px" data-options="iconCls:'icon-add', title:'添加服务器', closed:'true',
         modal:true" buttons='#svr-add-form-button'>
         <form id="svr-add-form">
             <!--{% csrf_token %}-->
@@ -62,7 +61,7 @@
                 <a class="parts-tip" href="javascript:void(0)"><img src="static/easyui/themes/icons/help.png"></a>
             </div>
             <div class="svr-add-form-d">
-                <label>所在机房：</label>
+                <label>分配IP：</label>
                 <input id='svr-add-idc' class="easyui-combobox" name='svr-add-idc' style="height: 20px" data-options="valueField:'id', textField:'name', required:true">
             </div>
             <div class="svr-add-form-d">
@@ -101,7 +100,7 @@
             <a href="javascript:void(0)" onclick="cb_add_server_cancel()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
         </div>
     </div>
-    <div id="svr-update-div" class="easyui-dialog" style="width: 300px;height: 440px" data-options="iconCls:'icon-edit', title:'编辑机柜信息', closed:'true',
+    <div id="svr-update-div" class="easyui-dialog" style="width: 300px;height: 440px" data-options="iconCls:'icon-edit', title:'编辑服务器信息', closed:'true',
         modal:true" buttons='#svr-update-form-button'>
         <form id="svr-update-form">
             <!--{% csrf_token %}-->
