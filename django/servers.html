@@ -17,7 +17,7 @@
             <!--{% csrf_token %}-->
             <div class="svr-search-form-div">
                 <label class="svr-search-label">所属机房：</label>
-                <input id='svr-search-idc' class="easyui-combobox" name='svr-add-idc' style="height: 20px" data-options="valueField:'id', textField:'name',url:'/resource/get-idcs/'">
+                <input id='svr-search-idc' class="easyui-combobox" name='svr-add-idc' style="height: 20px" data-options="valueField:'id', textField:'name'">
             </div>
             <div class="svr-search-form-div">
                 <label class="svr-search-label">入库日期：</label>
@@ -57,11 +57,15 @@
             </div>
             <div class="svr-add-form-d">
                 <label>硬件配置：</label>
-                <input type="text" name="svr-size" class="easyui-validatebox" data-options="required:true">
+                <input type="text" name="svr-parts" class="easyui-validatebox" data-options="required:true">
                 <a class="parts-tip" href="javascript:void(0)"><img src="static/easyui/themes/icons/help.png"></a>
             </div>
             <div class="svr-add-form-d">
-                <label>分配IP：</label>
+                <label>操作系统：</label>
+                <input type="text" id='svr-add-os' class="easyui-validatebox" name='svr-add-os' data-options="valueField:'id', textField:'name', required:true">
+            </div>
+            <div class="svr-add-form-d">
+                <label>所在机房：</label>
                 <input id='svr-add-idc' class="easyui-combobox" name='svr-add-idc' style="height: 20px" data-options="valueField:'id', textField:'name', required:true">
             </div>
             <div class="svr-add-form-d">
@@ -71,13 +75,8 @@
             <div class="svr-add-form-d">
                 <label>父服务器：</label>
                 <input id='svr-add-father' class="easyui-combobox" name='svr-add-father' style="height: 20px" data-options="valueField:'id', textField:'name', disabled:true">
-                <input id="svr-none-father" type="checkbox" name="none-father" value="0" onclick="check_father_selected()">有
+                <input id="svr-none-father" type="checkbox" value="0" onclick="check_father_selected()">有
                 <a class="father-tip" href="javascript:void(0)"><img src="static/easyui/themes/icons/help.png"></a>
-            </div>
-            <div class="svr-add-form-d">
-                <label>所属项目：</label>
-                <input id='svr-add-project' class="easyui-combobox" name='svr-add-project' style="height: 20px" data-options="valueField:'id', textField:'name', disabled:true">
-                <input id="svr-none-project" type="checkbox" name="none-project" value="0" onclick="check_project_selected()">有
             </div>
             <div class="svr-add-form-d">
                 <label>到期日期：</label>
@@ -88,16 +87,17 @@
                 <input id='svr-admin' class="easyui-combobox" name='svr-add-admin' style="height: 20px" data-options="valueField:'id', textField:'username', required:true">
             </div>
             <div class="svr-add-form-d">
-                <label>是否可用：</label>
+                <label>使用状态：</label>
                 <select name="svr-add-usable">
-                    <option value="0">可用</option>
-                    <option value="1">不可用</option>
+                    <option value="0">测试</option>
+                    <option value="1">生产</option>
+                    <option value="2">不可用</option>
                 </select>
             </div>
         </form>
         <div id='svr-add-form-button'>
-            <a href="javascript:void(0)" onclick="cb_add_server_commit()" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">添加</a>
-            <a href="javascript:void(0)" onclick="cb_add_server_cancel()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
+            <a href="javascript:void(0)" onclick="add_server_commit()" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">添加</a>
+            <a href="javascript:void(0)" onclick="add_server_cancel()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
         </div>
     </div>
     <div id="svr-update-div" class="easyui-dialog" style="width: 300px;height: 440px" data-options="iconCls:'icon-edit', title:'编辑服务器信息', closed:'true',
@@ -116,8 +116,12 @@
             </div>
             <div class="svr-add-form-d">
                 <label>硬件配置：</label>
-                <input type="text" name="svr-size" class="easyui-validatebox" data-options="required:true">
+                <input id="svr-update-parts" type="text" name="svr-parts" class="easyui-validatebox" data-options="required:true">
                 <a class="parts-tip" href="javascript:void(0)"><img src="static/easyui/themes/icons/help.png"></a>
+            </div>
+            <div class="svr-add-form-d">
+                <label>操作系统：</label>
+                <input type="text" id='svr-update-os' class="easyui-validatebox" name='svr-update-os' data-options="valueField:'id', textField:'name', required:true">
             </div>
             <div class="svr-update-form-d">
                 <label>所在机房：</label>
@@ -125,18 +129,11 @@
             </div>
             <div class="svr-add-form-d">
                 <label>所在机柜：</label>
-                <input id='svr-update-cab' class="easyui-combobox" name='svr-add-cab' style="height: 20px" data-options="valueField:'id', textField:'name', required:true">
+                <input id='svr-update-cab' class="easyui-combobox" name='svr-update-cab' style="height: 20px" data-options="valueField:'id', textField:'name', required:true">
             </div>
             <div class="svr-add-form-d">
                 <label>父服务器：</label>
-                <input id='svr-update-father' class="easyui-combobox" name='svr-add-father' style="height: 20px" data-options="valueField:'id', textField:'name', disabled:true">
-                <input id="svr-update-none-father" type="checkbox" name="none-father" value="0" onclick="check_update_father_selected()">有
-                <a class="father-tip" href="javascript:void(0)"><img src="static/easyui/themes/icons/help.png"></a>
-            </div>
-            <div class="svr-add-form-d">
-                <label>所属项目：</label>
-                <input id='svr-update-project' class="easyui-combobox" name='svr-add-project' style="height: 20px" data-options="valueField:'id', textField:'name', disabled:true">
-                <input id="svr-update-none-project" type="checkbox" name="none-project" value="0" onclick="check_update_project_selected()">有
+                <input id='svr-update-father' class="easyui-combobox" name='svr-update-father' style="height: 20px" data-options="valueField:'id', textField:'name'">
             </div>
             <div class="svr-update-form-d">
                 <label>到期日期：</label>
@@ -147,13 +144,13 @@
                 <input id='svr-update-admin' class="easyui-combobox" name='svr-update-admin' style="height: 20px" data-options="valueField:'id', textField:'username', required:true">
             </div>
             <div class="svr-update-form-d">
-                <label>是否可用：</label>
+                <label>使用状态：</label>
                 <input id='svr-update-usable' class="easyui-combobox" name='svr-update-usable' style="height: 20px" data-options="valueField:'id', textField:'usable'">
             </div>
         </form>
         <div id='svr-update-form-button'>
-            <a href="javascript:void(0)" onclick="cb_update_commit()" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">更新</a>
-            <a href="javascript:void(0)" onclick="cb_update_cancel()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
+            <a href="javascript:void(0)" onclick="svr_update_commit()" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">更新</a>
+            <a href="javascript:void(0)" onclick="svr_update_cancel()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
         </div>
     </div>
 </div>

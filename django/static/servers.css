@@ -10,7 +10,6 @@
 
 .svr-main-div {
     position:absolute;
-    width: 800px;
     height: 650px;
     top:50%;
     left: 50%;
@@ -19,12 +18,10 @@
 }
 
 .svr-display-div {
-    width: 800px;
     height: 600px;
 }
 
 .svr-bottom-div {
-    width: 800px;
     height: 50px;
     background-color: #99cdff;
 }
