@@ -13,5 +13,42 @@
 </head>
 <body>
 <div id="pro-main" style="height: 650px"></div>
+<div id="pro-add" class="easyui-dialog" style="width: 280px;height: 420px" data-options="title:'添加项目',iconCls:'icon-add', closed:true, buttons:'#pro-add-actions'">
+    <form id="pro-add-form">
+        <input id="pro-id" type="hidden" name="pro-id" value="0">
+        <div class="pro-add-parts">
+            <label>项目名称：</label>
+            <input type="text" id="pro-name" class="easyui-validatebox" data-options="required:true,validType:'length[3,20]'" name="pro-name">
+        </div>
+        <div class="pro-add-parts">
+            <label>项目描述：</label>
+            <textarea id="pro-description" style="height: 50px;width: 150px;resize: none" class="easyui-validatebox" data-options="required:true,validType:'length[5,30]'" name="pro-description"></textarea>
+        </div>
+        <div class="pro-add-parts">
+            <label>负&nbsp责&nbsp人：</label>
+            <input type="text" id="pro-admin" class="easyui-validatebox" data-options="required:true" name="pro-admin">
+        </div>
+        <div class="pro-add-parts">
+            <label>存储仓库：</label>
+            <input type="text" id="pro-repository" class="easyui-validatebox" data-options="required:true" name="pro-repository">
+        </div>
+        <div class="pro-add-parts">
+            <label>开发语言：</label>
+            <input type="text" id="pro-language" class="easyui-validatebox" data-options="required:true" name="pro-language">
+        </div>
+        <div class="pro-add-parts">
+            <label>运行环境：</label>
+            <textarea id="pro-environment" style="height: 50px;width: 150px;resize: none" class="easyui-validatebox" data-options="required:true" name="pro-environment"></textarea>
+        </div>
+        <div class="pro-add-parts">
+            <label>备&nbsp&nbsp&nbsp&nbsp注：</label>
+            <textarea id="pro-comment" style="height: 50px;width: 150px;resize: none" class="easyui-validatebox" data-options="required:true,validType:'length[1,50]'" name="pro-comment"></textarea>
+        </div>
+    </form>
+    <div id="pro-add-actions">
+        <a href="javascript:void(0)" onclick="do_submit()" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">提交</a>
+        <a href="javascript:void(0)" onclick="do_cancel()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
+    </div>
+</div>
 </body>
 </html>

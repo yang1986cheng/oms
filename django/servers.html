@@ -12,34 +12,34 @@
     <title></title>
 </head>
 <body>
-<div class="svr-main-div">
-    <div class="svr-search-div">
-        <form class="svr-search-form">
-            <!--{% csrf_token %}-->
-            <div class="svr-search-form-div">
-                <label class="svr-search-label">所属机房：</label>
-                <input id='svr-search-idc' class="easyui-combobox" name='svr-add-idc' style="height: 20px" data-options="valueField:'id', textField:'name'">
-            </div>
-            <div class="svr-search-form-div">
-                <label class="svr-search-label">入库日期：</label>
-                <input type="text" class="easyui-datebox">
-            </div>
-            <div class="svr-search-form-div">
-                <label class="svr-search-label">到期日期：</label>
-                <input type="text" class="easyui-datebox">
-            </div>
-            <div class="svr-search-form-div">
-                <label class="svr-search-label">是否有空位：</label>
-                <select name="svr-search-is-full">
-                    <option value="0">是</option>
-                    <option value="1">否</option>
-                </select>
-            </div>
-            <div class="svr-search-form-div">
-                <a id='svr-search-check' class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>
-            </div>
-        </form>
-    </div>
+<!--<div class="svr-main-div">-->
+    <!--<div class="svr-search-div">-->
+        <!--<form class="svr-search-form">-->
+            <!--&lt;!&ndash;{% csrf_token %}&ndash;&gt;-->
+            <!--<div class="svr-search-form-div">-->
+                <!--<label class="svr-search-label">所属机房：</label>-->
+                <!--<input id='svr-search-idc' class="easyui-combobox" name='svr-add-idc' style="height: 20px" data-options="valueField:'id', textField:'name'">-->
+            <!--</div>-->
+            <!--<div class="svr-search-form-div">-->
+                <!--<label class="svr-search-label">入库日期：</label>-->
+                <!--<input type="text" class="easyui-datebox">-->
+            <!--</div>-->
+            <!--<div class="svr-search-form-div">-->
+                <!--<label class="svr-search-label">到期日期：</label>-->
+                <!--<input type="text" class="easyui-datebox">-->
+            <!--</div>-->
+            <!--<div class="svr-search-form-div">-->
+                <!--<label class="svr-search-label">是否有空位：</label>-->
+                <!--<select name="svr-search-is-full">-->
+                    <!--<option value="0">是</option>-->
+                    <!--<option value="1">否</option>-->
+                <!--</select>-->
+            <!--</div>-->
+            <!--<div class="svr-search-form-div">-->
+                <!--<a id='svr-search-check' class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>-->
+            <!--</div>-->
+        <!--</form>-->
+    <!--</div>-->
     <div class="svr-display-div">
         <div id='svr-display-table'></div>
     </div>
@@ -154,6 +154,6 @@
             <a href="javascript:void(0)" onclick="svr_update_cancel()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
         </div>
     </div>
-</div>
+<!--</div>-->
 </body>
 </html>

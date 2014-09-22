@@ -1,11 +1,9 @@
 $(document).ready(function() {
     $('#pro-main').datagrid({
-        url:'xxx.json',
+        url:'xx.json',
         title:'项目列表',
-//        fit:true,
         iconCls:'icon-filter',
         fitColumns:true,
-
         rownumbers:true,
         collapsible:true,
         pagination:true,
@@ -13,45 +11,29 @@ $(document).ready(function() {
         singleSelect:true,
         striped:true,
         columns:[[
-//            {field:'svr-id':title:'ID',with 5},
-//            {field:'cab-id', title:'CAB-ID'},
-//            {field:'admin-id', title:'User-ID'},
-//            {field:'svr-used-type', title:'usable'},
-//            {field:'idc-id', title:'iid'},
-//            {field:'father-id', title:'fid'},
-            {field:'svr-name', title:'编号', width:40},
-            {field:'idc-name', title:'所在机房', width:40},
-            {field:'cab-name', title:'所属机柜', width:40},
-            {field:'svr-size', title:'规格', width:20},
-            {field:'svr-parts', title:'配置', width:60},
-            {field:'svr-os', title:'操作系统', width:40},
-            {field:'storage-date', title:'入库日期', width:40},
-            {field:'end-date', title:'到期日期', width:40},
-            {field:'svr-father', title:'父级', width:40},
-            {field:'svr-usable', title:'类型', width:20},
-            {field:'admin-name', title:'负责人', width:40}
+//            {field:'pro-id':title:'ID',with 5},
+            {field:'pro-name', title:'名称', width:40},
+            {field:'pro-description', title:'描述', width:40},
+            {field:'pro-admin', title:'负责人', width:30},
+            {field:'add-date', title:'创建日期', width:40},
+            {field:'pro-repository', title:'仓库', width:40},
+            {field:'pro-language', title:'开发语言', width:40},
+            {field:'pro-environment', title:'运行环境', width:40},
+            {field:'pro-comment', title:'备注', width:40}
         ]],
         onSelect:function(rowIndex, rowData) {
-            $('#btn-update').linkbutton('enable')
-            $('#btn-del').linkbutton('enable')
+            $('#btn-update').linkbutton('enable');
+            $('#btn-del').linkbutton('enable');
         },
         onDblClickRow:function () {
-            parts_tip()
-            size_tip()
-            father_tip()
-            open_update_window()
+            open_update_view();
         },
         toolbar:[{
             id:'btn-add',
             text:'添加',
             iconCls:'icon-add',
             handler:function(){
-                parts_tip()
-                size_tip()
-                father_tip()
-                $('#svr-add-new').dialog('open'),
-                    $('#svr-admin').combobox({'url':'/resource/get-users/'}),
-                    $('#svr-add-idc').combobox({'url':'/resource/get-idcs/'})
+                $('#pro-add').window('open')
             }
         },{
             id:'btn-update',
@@ -59,10 +41,7 @@ $(document).ready(function() {
             iconCls:'icon-edit',
             disabled:true,
             handler:function() {
-                parts_tip()
-                size_tip()
-                father_tip()
-                open_update_window()
+                open_update_view();
             }
         },'-',{
             id:'btn-del',
@@ -97,4 +76,36 @@ $(document).ready(function() {
         afterPageText:'页 共 {pages} 页',
         displayMsg:'当前显示 {from} - {to} 条记录   共 {total} 条记录'
     })
-})
+});
+
+function open_update_view() {
+    var val = $('#pro-main').datagrid('getSelected');
+    if (val) {
+        $('#pro-id').attr('value', val['pro-id']);
+        $('#pro-name').attr('value', val['pro-name']);
+        $('#pro-description').val(val['pro-description']);
+        $('#pro-admin').attr('value', val['pro-admin']);
+        $('#pro-repository').attr('value', val['pro-repository']);
+        $('#pro-language').attr('value', val['pro-language']);
+        $('#pro-environment').val(val['pro-environment']);
+        $('#pro-comment').val(val['pro-comment']);
+        $('#pro-add').window('open')
+    }
+}
+
+function do_submit() {
+    var pro_id = $('#pro-id').val()
+    if (pro_id == 0) {
+        alert(0)
+    } else {
+        if ($('#pro-add-form').form('validate')) {
+            alert("ok")
+        } else {
+            alert('no')
+        }
+    }
+}
+
+function do_cancel() {
+    $('#pro-add').window('close')
+}
