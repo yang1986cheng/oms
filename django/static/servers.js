@@ -13,7 +13,7 @@ $(document).ready(function(){
     $('#svr-display-table').datagrid({
         url:'xxx.json',
         title:'服务器列表',
-        fit:true,
+//        fit:true,
         iconCls:'icon-filter',
         fitColumns:true,
 //        nowrap:true,

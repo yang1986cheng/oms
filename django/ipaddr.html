@@ -7,16 +7,142 @@
     <link rel="stylesheet" href="static/ipaddr.css"/>
     <script type="text/javascript" src="static/jquery-2-1-1.js"></script>
     <script type="text/javascript" src="static/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="static/django_post.js"></script>
     <script type="text/javascript" src="static/ipaddr.js"></script>
     <title></title>
 </head>
 <body>
 <div id="ip-div-main" class="easyui-tabs" style="position:absolute;width: 800px; height: 650px;top:50%; left: 50%;margin-top: -325px;margin-left: -400px;">
-    <div title="公网IP" style="padding: 10px" data-options="iconCls:'icon-filter'">
-        <div id='svr-display-table' style="height: 650px"></div>
-     </div>
-    <div title="私网IP" data-options="iconCls:'icon-filter'">私网IP</div>
-    <div title="域名及映射" data-options="iconCls:'icon-filter'">域名及映射</div>
+    <div title="私网" data-options="iconCls:'icon-filter'">
+        <div id='ip-private-table' style="height: 650px"></div>
+    </div>
+    <div title="公网" data-options="iconCls:'icon-filter'">
+        <div id='ip-public-table' style="height: 650px"></div>
+    </div>
+    <div title="映射关系" data-options="iconCls:'icon-filter'">
+        <div id="ip-relation" style="height: 650"></div>
+    </div>
+</div>
+<div id="ip-relation-add" class="easyui-dialog" style="width:330px;height:250px" data-options="closed:true, title:'添加IP', iconCls:'icon-add', buttons:'#ip-relation-add-buttons'">
+    <form id="ip-relation-add-form">
+        <!--{% csrf_token %}-->
+        <div class="ip-add-parts">
+            <label>机房：</label>
+            <input id="ip-relation-add-idc" type="text" class="easyui-combobox" data-options="valueField:'id', textField:'name'" name="ip-relation-add-idc">
+        </div>
+        <div class="ip-add-parts">
+            <label>公网IP：</label>
+            <input id="ip-relation-add-pub" type="text" class="easyui-combobox" data-options="valueField:'id', textField:'name', required:true" name="ip-relation-add-pub">
+            <span>：</span>
+            <input type="text" class="easyui-numberbox" style="width: 50px" data-options="required:true, missingMessage:'请输入合法端口'" name="ip-relation-add-pub-port">
+        </div>
+        <div class="ip-add-parts">
+            <label>私网IP：</label>
+            <input id="ip-relation-add-pri" type="text" class="easyui-combobox" data-options="valueField:'id', textField:'name', required:true" name="ip-relation-add-pri">
+            <span>：</span>
+            <input type="text" class="easyui-numberbox" style="width: 50px" data-options="required:true, missingMessage:'请输入合法端口'" name="ip-relation-add-pri-port">
+        </div>
+        <div class="ip-add-parts">
+            <label>备注：</label>
+            <textarea id="ip-relation-add-comment" name="ip-up-comment" style="height: 80px" data-options="multiline:'true'"></textarea>
+        </div>
+    </form>
+</div>
+<div id="ip-relation-add-buttons">
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="ip_relation_add_submit()" data-options="iconCls:'icon-ok'">添加</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="ip_cancel('#ip-relation-add')" data-options="iconCls:'icon-cancel'">取消</a>
+</div>
+
+<div id="ip-relation-update" class="easyui-dialog" style="width:330px;height:250px" data-options="closed:true, title:'添加IP', iconCls:'icon-add', buttons:'#ip-relation-update-buttons'">
+    <form id="ip-relation-update-form">
+        <!--{% csrf_token %}-->
+        <input type="hidden" id="ip-pub-id" name="ip-pub-id">
+        <input type="hidden" id="ip-pri-id" name="ip-pri-id">
+        <input type="hidden" id="ip-relation-id" name="ip-relation-id">
+        <div class="ip-update-parts">
+            <label>公网IP：</label>
+            <input id="ip-relation-update-pub" type="text" class="easyui-combobox" data-options="valueField:'id', textField:'name'" name="ip-relation-update-pub">
+            <span>：</span>
+            <input id="ip-relation-update-pub-port" type="text" class="easyui-numberbox" style="width: 50px" data-options="required:true, missingMessage:'请输入合法端口'" name="ip-relation-update-pub-port">
+        </div>
+        <div class="ip-update-parts">
+            <label>私网IP：</label>
+            <input id="ip-relation-update-pri" type="text" class="easyui-combobox" data-options="valueField:'id', textField:'name'" name="ip-relation-update-pri">
+            <span>：</span>
+            <input id="ip-relation-update-pri-port" type="text" class="easyui-numberbox" style="width: 50px" data-options="required:true, missingMessage:'请输入合法端口'" name="ip-relation-update-pri-port">
+        </div>
+        <div class="ip-update-parts">
+            <label>备注：</label>
+            <textarea id="ip-relation-update-comment" name="ip-up-comment" style="height: 80px" data-options="multiline:'true'"></textarea>
+        </div>
+    </form>
+</div>
+<div id="ip-relation-update-buttons">
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="ip_relation_update_submit()" data-options="iconCls:'icon-ok'">添加</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="ip_cancel('#ip-relation-update')" data-options="iconCls:'icon-cancel'">取消</a>
+</div>
+
+<div id='ip-add' class="easyui-dialog" style="width:300px;height:180px" data-options="closed:true, title:'添加IP', iconCls:'icon-add', buttons:'#ip-add-buttons'">
+    <form id="ip-add-form">
+        <!--{% csrf_token %}-->
+        <div class="ip-add-parts">
+            <label id="ip-add-start">IP地址：</label>
+            <input type="text" id="ip-addr1-s" name="ip-addr1" style="width: 30px" class="easyui-numberbox" data-options="required:true, validType:['length[1,3]']">
+            <input type="text" id="ip-addr2-s" name="ip-addr2" style="width: 30px" class="easyui-numberbox" data-options="required:true, validType:['length[1,3]']">
+            <input type="text" id="ip-addr3-s" name="ip-addr3" style="width: 30px" class="easyui-numberbox" data-options="required:true, validType:['length[1,3]']">
+            <input type="text" id="ip-addr4-s" name="ip-addr4" style="width: 30px" class="easyui-numberbox" data-options="required:true, validType:['length[1,3]']">
+            <span id="ip-to">--&nbsp&nbsp<input type="text" id="ip-addr1-e" value="0" name="ip-addr1" style="width: 30px" class="easyui-numberbox" data-options="required:true, validType:['length[1,3]']"></span>
+
+            <input id="add-type" name="add-type" type="hidden">
+            <input id="ip-type" name="ip-type" type="hidden">
+        </div>
+        <!--<div  id="ip-add-end" class="ip-add-parts">-->
+            <!--<label>结束IP：</label>-->
+            <!--<input type="text" id="ip-addr1-e" value="0" name="ip-addr1" style="width: 30px" class="easyui-numberbox" data-options="required:true, validType:['length[1,3]']">-->
+            <!--<input type="text" id="ip-addr2-e" value="0" name="ip-addr2" style="width: 30px" class="easyui-numberbox" data-options="required:true, validType:['length[1,3]']">-->
+            <!--<input type="text" id="ip-addr3-e" value="0" name="ip-addr3" style="width: 30px" class="easyui-numberbox" data-options="required:true, validType:['length[1,3]']">-->
+            <!--<input type="text" id="ip-addr4-e" value="0" name="ip-addr4" style="width: 30px" class="easyui-numberbox" data-options="required:true, validType:['length[1,3]']">-->
+        <!--</div>-->
+        <div class="ip-add-parts">
+            <label id="ip-add-netmask">子网掩码：</label>
+            <input type="text" id="netmask-1" name="ip-addr1" style="width: 30px" class="easyui-numberbox" data-options="required:true, validType:['length[1,3]']">
+            <input type="text" id="netmask-2" name="ip-addr2" style="width: 30px" class="easyui-numberbox" data-options="required:true, validType:['length[1,3]']">
+            <input type="text" id="netmask-3" name="ip-addr3" style="width: 30px" class="easyui-numberbox" data-options="required:true, validType:['length[1,3]']">
+            <input type="text" id="netmask-4" name="ip-addr4" style="width: 30px" class="easyui-numberbox" data-options="required:true, validType:['length[1,3]']">
+        </div>
+        <div class="ip-add-parts">
+            <label>所属机房：</label>
+            <input type="text" id="ip-add-idc" name="add-idc" class="easyui-combobox" data-options="valueField:'id', textField:'name', required:true">
+        </div>
+    </form>
+</div>
+<div id="ip-add-buttons">
+    <a href="javascript:void(0)" onclick="ip_add_submit()" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">提交</a>
+    <a href="javascript:void(0)" onclick="ip_add_cancel()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
+</div>
+<div id="ip-private-update" class="easyui-dialog" style="width: 300px;height: 280px" data-options="closed:true, title:'配置IP信息', iconCls:'icon-edit', buttons:'#ip-private-update-btn'">
+    <form id="ip-up-form">
+        <!--{% csrf_token %}-->
+        <input type="hidden" id="ip-up-addr-id" name="up-ip-id">
+        <div class="ip-add-parts">
+            <label id="ip-update-private-label">IP地址：</label>
+            <input id="ip-up-addr" type="text" name="ip-addr" class="easyui-validatebox" data-options="required:true" disabled>
+        </div>
+        <div class="ip-add-parts">
+            <label>服务器：</label>
+            <input type="text" id="ip-up-svr" name="ip-up-svr-id" class="easyui-combobox" data-options="valueField:'id', textField:'name'">
+        </div>
+        <div class="ip-add-parts">
+            <label>备注：</label>
+            <textarea id="ip-up-comment" name="ip-up-comment" style="height: 80px" data-options="multiline:'true'"></textarea>
+        </div>
+    </form>
+</div>
+<div id="ip-private-update-btn">
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="ip_update_submit()" data-options="iconCls:'icon-ok'">更新</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="ip_update_cancel()" data-options="iconCls:'icon-cancel'">取消</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="ip_update_disable()" data-options="iconCls:'icon-clear'">禁用IP</a>
+
 </div>
 </body>
 </html>
