@@ -15,6 +15,7 @@
 <div id="pro-main" style="height: 650px"></div>
 <div id="pro-add" class="easyui-dialog" style="width: 280px;height: 420px" data-options="title:'添加项目',iconCls:'icon-add', closed:true, buttons:'#pro-add-actions'">
     <form id="pro-add-form">
+        {% csrf_token %}
         <input id="pro-id" type="hidden" name="pro-id" value="0">
         <div class="pro-add-parts">
             <label>项目名称：</label>
@@ -26,11 +27,11 @@
         </div>
         <div class="pro-add-parts">
             <label>负&nbsp责&nbsp人：</label>
-            <input type="text" id="pro-admin" class="easyui-validatebox" data-options="required:true" name="pro-admin">
+            <input type="text" id="pro-admin" class="easyui-validatebox" data-options="required:true,validType:'length[2,20]'" name="pro-admin">
         </div>
         <div class="pro-add-parts">
             <label>存储仓库：</label>
-            <input type="text" id="pro-repository" class="easyui-validatebox" data-options="required:true" name="pro-repository">
+            <input type="text" id="pro-repository" class="easyui-validatebox" data-options="required:true,validType:'length[5,100]'" name="pro-repository">
         </div>
         <div class="pro-add-parts">
             <label>开发语言：</label>
@@ -38,16 +39,48 @@
         </div>
         <div class="pro-add-parts">
             <label>运行环境：</label>
-            <textarea id="pro-environment" style="height: 50px;width: 150px;resize: none" class="easyui-validatebox" data-options="required:true" name="pro-environment"></textarea>
+            <textarea id="pro-environment" style="height: 50px;width: 150px;resize: none" class="easyui-validatebox" data-options="required:true,validType:'length[5,100]'" name="pro-environment"></textarea>
         </div>
         <div class="pro-add-parts">
             <label>备&nbsp&nbsp&nbsp&nbsp注：</label>
-            <textarea id="pro-comment" style="height: 50px;width: 150px;resize: none" class="easyui-validatebox" data-options="required:true,validType:'length[1,50]'" name="pro-comment"></textarea>
+            <textarea id="pro-comment" style="height: 50px;width: 150px;resize: none" class="easyui-validatebox" data-options="validType:'length[1,100]'" name="pro-comment"></textarea>
         </div>
     </form>
     <div id="pro-add-actions">
         <a href="javascript:void(0)" onclick="do_submit()" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">提交</a>
-        <a href="javascript:void(0)" onclick="do_cancel()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
+        <a href="javascript:void(0)" onclick="do_cancel('#pro-add')" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
+    </div>
+</div>
+<div id="pro-ip-relation" class="easyui-dialog" style="width: 500px;height: 600px" data-options="title:'服务器详情',iconCls:'icon-edit',closed:true, modal:true, shadow:true">
+    <div id="pro-ip-rel-list"></div>
+    <div id="pro-ip-add" class="easyui-dialog" style="width: 300px;height: 250px" data-options="title:'添加服务器',iconCls:'icon-add',closed:true, modal:true, shadow:true,buttons:'#pro-ip-add-btn'">
+        <form id="pro-ip-form">
+            <input type="hidden" id="pro-ip-add-id" name="pro-id">
+            <div class="pro-add-parts">
+                <label>选择机房：</label>
+                <input type="text" id="pro-ip-add-idc" class="easyui-combobox" name="idc" data-options="valueField:'id', textField:'name'">
+            </div>
+            <div class="pro-add-parts">
+                <label>地址类型：</label>
+                <select id="pro-ip-add-ip-type" name="ip-type">
+                    <option value="0">私网地址</option>
+                    <option value="1">公网地址</option>
+                </select>
+            </div>
+            <div class="pro-add-parts">
+                <label>服&nbsp务&nbsp器：</label>
+                <input id="pro-ip-server" type="text" class="easyui-combobox" data-options="multiple:true, valueField:'id', textField:'name'" name="ips">
+                <span><a class="pro-rel-man" href="javascript:void(0)" onclick="get_server()">获取</a></span>
+            </div>
+            <div class="pro-add-parts">
+                <label>备&nbsp&nbsp&nbsp&nbsp注：</label>
+                <textarea id="pro-ip-comment" style="height: 50px;width: 150px;resize: none" class="easyui-validatebox" data-options="validType:'length[1,100]'" name="rel-comment"></textarea>
+            </div>
+        </form>
+    </div>
+    <div id="pro-ip-add-btn">
+        <a href="javascript:void(0)" onclick="do_rel_submit()" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">提交</a>
+        <a href="javascript:void(0)" onclick="do_cancel('#pro-ip-add')" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
     </div>
 </div>
 </body>
