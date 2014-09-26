@@ -93,6 +93,7 @@ $(document).ready(function() {
 function open_update_view() {
     var val = $('#pro-main').datagrid('getSelected');
     if (val) {
+        $('#pro-add').dialog({title:'修改项目信息'})
         $('#pro-id').attr('value', val['pro-id']);
         $('#pro-name').attr('value', val['pro-name']);
         $('#pro-description').val(val['pro-description']);
@@ -125,9 +126,10 @@ function do_submit() {
                 $('#pro-add-form').serialize(),
                 function(data, status) {
                     if (status == 'success' && data['status'] == 'success') {
-                        alert('添加成功')
+                        alert('修改成功')
+                        $('#pro-add').window('close')
                         $('#pro-main').datagrid('reload')
-                    } else {alert('添加失败')}
+                    } else {alert('修改失败')}
                 })
         } else {return false}
     }
@@ -138,7 +140,10 @@ function do_cancel(id) {
 }
 
 function open_pro_ip_rel() {
-    $('#pro-ip-relation').dialog({title:$('#pro-main').datagrid('getSelected')['pro-name'] + ' -- 服务器详情'})
+    $('#pro-ip-relation').dialog({
+        title:$('#pro-main').datagrid('getSelected')['pro-name'] + ' -- 服务器详情',
+        onBeforeClose:function() {$('#pro-main').datagrid('reload')}
+    })
     $('#pro-ip-rel-list').datagrid({
 //        url:'/project/list-projects/',
         queryParams:{
@@ -163,6 +168,7 @@ function open_pro_ip_rel() {
         ]],
         onSelect:function(rowIndex, rowData) {
             $('#btn-rel-del').linkbutton('enable');
+            $('#btn-rel-clean').linkbutton('enable')
         },
         toolbar:[{
             id:'btn-rel-add',
@@ -183,7 +189,29 @@ function open_pro_ip_rel() {
                         var val = $('#pro-ip-rel-list').datagrid('getSelected')
                         if (val) {
                             $.post('/project/del-pro-ip-relation/',
-                                {'rel-id':val['rel-id']},
+                                {'rel-id':val['rel-id'],  'del-type' : '0'},
+                                function(data, status) {
+                                    if(status == 'success' && data['status'] == 'success') {
+                                        alert("删除成功!")
+                                        $('#pro-ip-rel-list').datagrid('reload')
+                                    } else {alert(data['data'])}
+                                })
+                        }
+                    }
+                });
+            }
+        },'-',{
+            id:'btn-rel-clean',
+            text:'清空',
+            iconCls:'icon-cancel',
+            disabled:true,
+            handler:function(){
+                $.messager.confirm('清空确认', '请确认需要清空该项目所有服务器信息!<br><br>该操作将不可撤销!', function(r){
+                    if (r){
+                        var val = $('#pro-ip-rel-list').datagrid('getSelected')
+                        if (val) {
+                            $.post('/project/del-pro-ip-relation/',
+                                {'rel-id':val['rel-id'], 'del-type' : '1'},
                                 function(data, status) {
                                     if(status == 'success' && data['status'] == 'success') {
                                         alert("删除成功!")
