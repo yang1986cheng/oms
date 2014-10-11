@@ -38,6 +38,7 @@ $(document).ready(function(){
             {field:'svr-size', title:'规格', width:20},
             {field:'svr-parts', title:'配置', width:60},
             {field:'svr-os', title:'操作系统', width:40},
+            {field:'svr-hostname', title:'计算机名', width:40},
             {field:'storage-date', title:'入库日期', width:40},
             {field:'end-date', title:'到期日期', width:40},
             {field:'svr-father', title:'父级', width:40},
@@ -149,6 +150,7 @@ function open_update_window() {
         $('#svr-name').attr('value',val['svr-name'])
         $('#svr-size').attr('value',val['svr-size'])
         $('#svr-update-os').attr('value',val['svr-os'])
+        $('#svr-update-hostname').attr('value', val['svr-hostname'])
         $('#svr-end-date').datebox('setValue',val['end-date'])
         $('#svr-update-parts').attr('value', val['svr-parts'])
         $('#svr-update-idc').combobox({

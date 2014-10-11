@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="static/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="static/easyui/themes/icon.css">
+    <link rel="stylesheet" href="static/exc-command.css"/>
+    <script type="text/javascript" src="static/jquery-2-1-1.js"></script>
+    <script type="text/javascript" src="static/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="static/django_post.js"></script>
+    <script type="text/javascript" src="static/exc-command.js"></script>
+    <title></title>
+</head>
+<body>
+<div class="easyui-dialog" style="height: 650px;width: 100%;margin-top: 0px" data-options="title:'指令执行控制台',iconCls:'icon-filter',closable:false,shadow:true">
+    <div class="exec-command">
+        <div class="exec-param">
+            <select id="exc-type"></select>
+            <div id="sp">
+                <div style="color:#129992;background:#fafafa;padding:5px;">选择执行类型</div>
+                <input type="radio" name="exc-type" value="1"><span>指定项目执行</span><br/>
+                <input type="radio" name="exc-type" value="2"><span>指定服务器</span><br/>
+                <input type="radio" name="exc-type" value="3"><span>指定系统类型</span><br/>
+            </div>
+        </div>
+    </div>
+    <div class="exec-command">
+        <div class="exec-param">
+            <select id="exc-project"></select>
+            <div id="sp">
+                <div style="color:#129992;background:#fafafa;padding:5px;">选择执行类型</div>
+                <input type="radio" name="exc-type" value="1"><span>指定项目执行</span><br/>
+                <input type="radio" name="exc-type" value="2"><span>指定服务器</span><br/>
+                <input type="radio" name="exc-type" value="3"><span>指定系统类型</span><br/>
+            </div>
+        </div>
+    </div>
+    <div class="exec-command">
+        <div class="exec-param">
+            <select id="exc-hosts"></select>
+            <div id="sp">
+                <div style="color:#129992;background:#fafafa;padding:5px;">选择执行类型</div>
+                <input type="radio" name="exc-type" value="1"><span>指定项目执行</span><br/>
+                <input type="radio" name="exc-type" value="2"><span>指定服务器</span><br/>
+                <input type="radio" name="exc-type" value="3"><span>指定系统类型</span><br/>
+            </div>
+        </div>
+    </div>
+    <div class="display-resault">
+    </div>
+</div>
+</body>
+</html>
